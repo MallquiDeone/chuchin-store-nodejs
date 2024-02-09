@@ -3,15 +3,11 @@ import { pool } from "../db.js";
 //create category
 export const createCategory = async (req, res) => {
   try {
-    const { vNombre } = req.body;
-    const [result] = await pool.query(
-      "INSERT INTO tblCategory(vName) VALUES(?)",
-      [vNombre]
-    );
-    res.json({
-      category_id: result.insertId,
-      vNombre,
-    });
+    const { vName } = req.body;
+    const [result] = await pool.query("INSERT INTO tblCategory(vName) VALUES(?)",
+      [vName]
+    )
+    res.send(result);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Error when inserting data" });
