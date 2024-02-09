@@ -14,7 +14,7 @@ export const createCategory = async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    res.sendStatus(500).json({ message: "Error when inserting data" });
+    res.status(500).json({ message: "Error when inserting data" });
   }
 };
 
